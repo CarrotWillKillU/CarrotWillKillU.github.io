@@ -1,8 +1,0 @@
-AddDefaultCharset UTF-8
-
-<Files ~ "^(system|config|)\.php$">
-	Deny from all
-</Files>
-<Files install.sql>
-	Deny from all
-</Files>
