@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Script installation...</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link href="style/css/bootstrap.min.css" rel="stylesheet">
+	<link href="style/css/material-dashboard.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+</head>
+<body>
+	<div class="content">
+		<div class="container">
+			<div class="text-center">
+				<h1 class="title text-primary">Thank you for your purchase!</h1>
+			</div>
+			<?=MessageShow();?>
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Information about script:</h4>
+				</div>
+				<div class="card-content">PHP version: <b><?php echo VERSION; ?></b></div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">Script requirements:</h4>
+				</div>
+				<div class="card-content">
+					<p>Version PHP 5.6+ and higher - <?php echo phpversion() < '5.6' ? '<font color=red><b>No</b></font>' : '<font color=green><b>Yes</b></font>'; ?></p>
+					<p>`777` rights for file <b>/style/img/background.jpg</b> - <?php echo is_writable(STYLE_DIR . '/img/background.jpg') ? '<font color=green><b>Yes</b></font>' : '<font color=red><b>No</b></font>'; ?></p>
+				</div>
+			</div>
+			<form id="install" autocomplete="off" class="card" method="POST">
+				<input id="db_pass" name="db_pass" type="password" autofocus="no" style="display: none;">
+				<div class="card-header">
+					<h4 class="card-title">Initial setup</h4>
+				</div>
+				<div class="card-content">
+					<div class="form-group label-floating">
+						<label for="site_name" class="control-label">Website name *</label>
+						<input type="text"  id="site_name" name="site_name" class="form-control" value="<?php echo @$config['main']['site_name']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="mainurl" class="control-label">Main URL *</label>
+						<input type="text" id="mainurl" name="mainurl" class="form-control" value="<?php echo $mainurl; ?>" required>
+					</div>
+					<code>MineStoreCMS.com | or | MineStoreCMS.com/dir/ | or | MineStoreCMS.com/shop/</code>
+					<div class="form-group label-floating">
+						<label for="serverIP" class="control-label">Server IP *</label>
+						<input type="text" id="serverIP" name="serverIP" class="form-control" value="<?php echo @$config['main']['serverIP']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="serverPort" class="control-label">Server Port *</label>
+						<input type="text" id="serverPort" name="serverPort" class="form-control" value="<?php echo @$config['main']['serverPort']; ?>" required>
+					</div>
+					<br>
+					<hr>
+					<h4 class="card-title">Database Connection</h4>
+					<div class="form-group label-floating">
+						<label for="db_host" class="control-label">MySQL Database Host *</label>
+						<input type="text" id="db_host" name="db_host" class="form-control" value="<?php echo @$config['main']['db_host']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="db_port" class="control-label">MySQL Database Port *</label>
+						<input type="text" id="db_port" name="db_port" class="form-control" value="<?php echo @$config['main']['db_port']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="db_name" class="control-label">MySQL Database Name *</label>
+						<input type="text" id="db_name" name="db_name" class="form-control" value="<?php echo @$config['main']['db_name']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="db_user" class="control-label">MySQL Database User *</label>
+						<input type="text" id="db_user" name="db_user" class="form-control" value="<?php echo @$config['main']['db_user']; ?>" required>
+					</div>
+					<div class="form-group label-floating">
+						<label for="db_pass" class="control-label">MySQL Database Password *</label>
+						<input type="password" id="db_pass" name="db_pass" class="form-control" value="<?php echo @$config['main']['db_pass']; ?>">
+					</div>
+				</div>
+				<div class="card-footer text-center">
+					<button type="submit" class="btn btn-info">Install!</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+<script src="style/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="style/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="style/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="style/js/material.min.js" type="text/javascript"></script>
+<script src="style/js/jquery.validate.min.js"></script>
+<script src="style/js/material-dashboard.js"></script>
+<script>
+    function setFormValidation(id) {
+        $(id).validate({
+            errorPlacement: function(error, element) {
+                $(element).parent('div').addClass('has-error');
+            }
+        });
+    }
+
+    $(document).ready(function() {
+        setFormValidation('#install');
+    });
+</script>
+</html>

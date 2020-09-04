@@ -1,0 +1,10 @@
+	<div class="user">
+		<img style="height: 50px;" src="https://minotar.net/avatar/<?php echo $buyer['username']; ?>">
+		<div>
+			<div class="name"><?php echo $buyer['username']; ?></div>
+			<div class="time">
+				<div class="rhomb micro"><img src="/style/img/timeIcon.svg"></div>
+				<b><?php echo $goods_name . date(" d.m в H:i", $buyer['time']); ?></b>
+			</div>
+		</div>
+	</div>

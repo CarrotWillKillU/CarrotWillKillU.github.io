@@ -1,0 +1,55 @@
+<div class="row" id="srv_<?php echo $i; ?>">
+	<?php echo $status; ?>
+	<div class="col-lg-10">
+		<div class="row">
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_name_<?php echo $i; ?>" class="control-label">Name</label>
+					<input name="srv_name_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['name']; ?>" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_host_<?php echo $i; ?>" class="control-label">Host (IP)</label>
+					<input name="srv_host_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['host']; ?>" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_port_<?php echo $i; ?>" class="control-label">Port RCON</label>
+					<input name="srv_port_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['port']; ?>" pattern="[0-9]{1,5}" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_password_<?php echo $i; ?>" class="control-label">Password RCON</label>
+					<input name="srv_password_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['password']; ?>" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_host_websocket_<?php echo $i; ?>" class="control-label">Host WebSocket (IP)</label>
+					<input name="srv_host_websocket_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['host_websocket']; ?>" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_port_websocket_<?php echo $i; ?>" class="control-label">Port WebSocket</label>
+					<input name="srv_port_websocket_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['port_websocket']; ?>" pattern="[0-9]{1,5}" required>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="form-group label-floating">
+					<label for="srv_password_websocket_<?php echo $i; ?>" class="control-label">Password WebSocket</label>
+					<input name="srv_password_websocket_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['servers'][$i]['password_websocket']; ?>" required>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-2 text-center">
+		<div class="btn-group">
+			<a class="btn btn-success btn-round btn-sm" href="?mode=settings&id=rcon&test=<?php echo $i; ?>"><i class="material-icons">autorenew</i></a>
+			<button class="btn btn-warning btn-round btn-sm" type="button" onclick="removeid('<?php echo $i; ?>')"><i class="material-icons">delete</i></button>
+		</div>
+	</div>
+</div>

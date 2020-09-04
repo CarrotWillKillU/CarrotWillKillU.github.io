@@ -1,0 +1,292 @@
+<form class="card" method="POST">
+	<div class="card-header">
+		<h4 class="card-title">Merchant Settings</h4>
+	</div>
+	<div class="card-content">
+		<div class="nav-center">
+			<ul class="nav nav-pills nav-pills-warning" role="tablist">
+				<li class="active"><a href="#paypal" data-toggle="tab">PayPal</a></li>
+				<li><a href="#g2apay" data-toggle="tab">G2APay</a></li>
+				<li><a href="#fondy" data-toggle="tab">Fondy</a></li>
+				<li><a href="#2check" data-toggle="tab">2Checkout</a></li>
+				<li><a href="#unitpay" data-toggle="tab">UnitPay</a></li>
+				<li><a href="#freekassa" data-toggle="tab">FreeKassa</a></li>
+				<li><a href="#robokassa" data-toggle="tab">RoboKassa</a></li>
+				<li><a href="#webmoney" data-toggle="tab">WebMoney</a></li>
+				<li><a href="#paysera" data-toggle="tab">PaySera</a></li>
+			</ul>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane fade in active" id="paypal">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="paypal_enable" name="paypal_enable" <?php echo ($config['merchant']['paypal_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="text"> Request API access here <a href="https://www.paypal.com/businessprofile/mytools/apiaccess/firstparty">https://www.paypal.com/businessprofile/mytools/apiaccess/firstparty</a> </div>
+				<div class="form-group label-floating">
+					<label for="paypal_user" class="control-label">User API login</label>
+					<input id="paypal_user" name="paypal_user" class="form-control" type="text" value="<?php echo $config['merchant']['paypal_user']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="paypal_password" class="control-label">User API password</label>
+					<input type="text" id="paypal_password" name="paypal_password" class="form-control" value="<?php echo $config['merchant']['paypal_password']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="paypal_signature" class="control-label">User API signature</label>
+					<input type="text" name="paypal_signature" class="form-control" id="paypal_signature" value="<?php echo $config['merchant']['paypal_signature']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="paypal_currency_code" class="control-label">Currency code USD\EUR\GBP</label>
+					<input type="text" name="paypal_currency_code" class="form-control" id="paypal_currency_code" value="<?php echo $config['merchant']['paypal_currency_code']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="paypal_testing" class="control-label">Sandbox mode (Testing)?</label>
+					<select id="paypal_testing" name="paypal_testing" class="selectpicker" data-style="select-with-transition" title="Sandbox mode (Testing)?" data-size="7" required>
+						<option disabled> Sandbox mode (Testing)?</option>
+						<option value="0" <?php echo (!$config['merchant']['paypal_testing']) ? 'selected' : ''; ?>>Disabled</option>
+						<option value="1" <?php echo ($config['merchant']['paypal_testing']) ? 'selected' : ''; ?>>Enabled</option>
+					</select>
+				</div>
+			</div>
+			<div class="tab-pane fade in" id="fondy">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="fondy_enable" name="fondy_enable" <?php echo ($config['merchant']['fondy_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label for="fondy_id" class="control-label">Fondy Merchant ID</label>
+					<input id="fondy_id" name="fondy_id" class="form-control" type="text" value="<?php echo $config['merchant']['fondy_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="fondy_signature" class="control-label">Fondy Signature</label>
+					<input type="text" id="fondy_signature" name="fondy_signature" class="form-control" value="<?php echo $config['merchant']['fondy_signature']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="fondy_credit_key" class="control-label">Fondy Credit Key</label>
+					<input type="text" name="fondy_credit_key" class="form-control" id="fondy_credit_key" value="<?php echo $config['merchant']['fondy_credit_key']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="fondy_currency" class="control-label">Currency code USD\EUR\RUB</label>
+					<input type="text" name="fondy_currency" class="form-control" id="fondy_currency" value="<?php echo $config['merchant']['fondy_currency']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade in" id="2check">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="2check_enable" name="2check_enable" <?php echo ($config['merchant']['2check_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label for="2check_id" class="control-label">2Checkout ID</label>
+					<input type="text" id="2check_id" name="2check_id" class="form-control" value="<?php echo $config['merchant']['2check_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="2check_secret_word" class="control-label">2Checkout Secret Word</label>
+					<input type="text" id="2check_secret_word" name="2check_secret_word" class="form-control" value="<?php echo $config['merchant']['2check_secret_word']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="2check_currency" class="control-label">Currency code USD\EUR\RUB</label>
+					<input type="text" name="2check_currency" class="form-control" id="2check_currency" value="<?php echo $config['merchant']['2check_currency']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade in" id="interkassa">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="ik_enable" name="ik_enable" <?php echo ($config['merchant']['ik_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label for="ik_shop_id" class="control-label">Shop ID</label>
+					<input id="ik_shop_id" name="ik_shop_id" class="form-control" type="text" value="<?php echo $config['merchant']['ik_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="ik_secret_key" class="control-label">Secret keu</label>
+					<input type="text" id="ik_secret_key" name="ik_secret_key" class="form-control" value="<?php echo $config['merchant']['ik_secret_key']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="ik_testing" class="control-label">Sandbox mode (Testing)?</label>
+					<select id="ik_testing" name="ik_testing" class="selectpicker" data-style="select-with-transition" title="Sandbox mode (Testing)?" data-size="7" required>
+						<option disabled> Sandbox mode (Testing)?</option>
+						<option value="0" <?php echo (!$config['merchant']['ik_testing']) ? 'selected' : ''; ?>>Disabled</option>
+						<option value="1" <?php echo ($config['merchant']['ik_testing']) ? 'selected' : ''; ?>>Enabled</option>
+					</select>
+				</div>
+				<div class="form-group label-floating">
+					<label for="ik_testing_key" class="control-label">Testing key</label>
+					<input type="text" name="ik_testing_key" class="form-control" id="ik_testing_key" value="<?php echo $config['merchant']['ik_testing_key']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade in" id="g2apay">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="g2a_enable" name="g2a_enable" <?php echo ($config['merchant']['g2a_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label for="g2a_hash" class="control-label">G2A Hash</label>
+					<input id="g2a_hash" name="g2a_hash" class="form-control" type="text" value="<?php echo $config['merchant']['g2a_hash']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="g2a_secret" class="control-label">Secret key</label>
+					<input type="text" id="g2a_secret" name="g2a_secret" class="form-control" value="<?php echo $config['merchant']['g2a_secret']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label for="g2a_email" class="control-label">Email</label>
+					<input type="text" name="g2a_email" class="form-control" id="g2a_email" value="<?php echo $config['merchant']['g2a_email']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="unitpay">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="up_enable" name="up_enable" <?php echo ($config['merchant']['up_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="up_shop_id">Public shop key</label>
+					<input type="text" id="up_shop_id" name="up_shop_id" class="form-control"  value="<?php echo $config['merchant']['up_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="up_secret_key">Secret key</label>
+					<input type="text"  id="up_secret_key" name="up_secret_key" class="form-control" value="<?php echo $config['merchant']['up_secret_key']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="freekassa">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="fk_enable" name="fk_enable" <?php echo ($config['merchant']['fk_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="fk_shop_id">Shop ID</label>
+					<input type="text" id="fk_shop_id" name="fk_shop_id" class="form-control" value="<?php echo $config['merchant']['fk_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="fk_shop_key_1">Secret key #1</label>
+					<input type="text" id="fk_shop_key_1" name="fk_shop_key_1" class="form-control" value="<?php echo $config['merchant']['fk_shop_key_1']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="fk_shop_key_2">Secret key #2</label>
+					<input type="text" id="fk_shop_key_2" name="fk_shop_key_2" class="form-control" value="<?php echo $config['merchant']['fk_shop_key_2']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="mykassa">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" name="mk_enable" id="mk_enable" <?php echo ($config['merchant']['mk_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="mk_shop_id">Shop ID</label>
+					<input type="text" id="mk_shop_id" name="mk_shop_id" class="form-control" value="<?php echo $config['merchant']['mk_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="mk_shop_key_1">Secret key #1</label>
+					<input type="text" id="mk_shop_key_1" name="mk_shop_key_1" class="form-control" value="<?php echo $config['merchant']['mk_shop_key_1']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="mk_shop_key_2">Secret key #2</label>
+					<input type="text" id="mk_shop_key_2" name="mk_shop_key_2" class="form-control" value="<?php echo $config['merchant']['mk_shop_key_2']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="walletone">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="wmi_enable" name="wmi_enable" <?php echo ($config['merchant']['wmi_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wmi_shop_id">Shop ID</label>
+					<input type="text" id="wmi_shop_id" name="wmi_shop_id" class="form-control" value="<?php echo $config['merchant']['wmi_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wmi_secret_key">Secret key</label>
+					<input type="text" id="wmi_secret_key" name="wmi_secret_key" class="form-control" value="<?php echo $config['merchant']['wmi_secret_key']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="robokassa">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="rk_enable" name="rk_enable" <?php echo ($config['merchant']['rk_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="rk_shop_id">Shop ID</label>
+					<input type="text" id="rk_shop_id" name="rk_shop_id" class="form-control" value="<?php echo $config['merchant']['rk_shop_id']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="rk_shop_key_1">Secret key #1</label>
+					<input type="text" id="rk_shop_key_1" name="rk_shop_key_1" class="form-control" value="<?php echo $config['merchant']['rk_shop_key_1']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="rk_shop_key_2">Secret key #2</label>
+					<input type="text" id="rk_shop_key_2" name="rk_shop_key_2" class="form-control" value="<?php echo $config['merchant']['rk_shop_key_2']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="webmoney">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="wm_enable" name="wm_enable" <?php echo ($config['merchant']['wm_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_purse">Wallet ID</label>
+					<input type="text" id="wm_purse" name="wm_purse" class="form-control" value="<?php echo $config['merchant']['wm_purse']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_secret_key">Secret key</label>
+					<input type="text" id="wm_secret_key" name="wm_secret_key" class="form-control" value="<?php echo $config['merchant']['wm_secret_key']; ?>">
+				</div>
+			</div>
+			<div class="tab-pane fade" id="paysera">
+				<div class="form-group">
+					<div class="togglebutton">
+						<label>
+							<input type="checkbox" id="paysera_enable" name="paysera_enable" <?php echo ($config['merchant']['paysera_enable']) ? 'checked' : '' ?>> Enabled?
+						</label>
+					</div>
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_purse">Currency</label>
+					<input type="text" id="paysera_currency" name="paysera_currency" class="form-control" value="<?php echo $config['merchant']['paysera_currency']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_purse">Country</label>
+					<input type="text" id="paysera_country" name="paysera_country" class="form-control" value="<?php echo $config['merchant']['paysera_country']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_purse">Project ID</label>
+					<input type="text" id="paysera_projectid" name="paysera_projectid" class="form-control" value="<?php echo $config['merchant']['paysera_projectid']; ?>">
+				</div>
+				<div class="form-group label-floating">
+					<label class="control-label" for="wm_purse">Sign password</label>
+					<input type="text" id="paysera_sign_password" name="paysera_sign_password" class="form-control" value="<?php echo $config['merchant']['paysera_sign_password']; ?>">
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-block btn-danger"><i class="material-icons">save</i> Update</button>
+	</div>
+</form>

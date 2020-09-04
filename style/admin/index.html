@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><?php echo $page['title']; ?> - Dashboard</title>
+	<base href="//<?php echo $config['main']['mainurl']; ?>cpanel.php">
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+	<meta name="viewport" content="width=device-width">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link href="style/css/bootstrap2.min.css" rel="stylesheet">
+	<link href="style/css/material-dashboard.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="sidebar" data-active-color="red" data-background-color="black">
+			<div class="logo">
+				<a href="//<?php echo $config['main']['mainurl']; ?>" rel="tooltip" data-placement="bottom" class="simple-text" data-original-title="Перейти на сайт">
+					<?php echo $config['main']['site_name']; ?>
+				</a>
+			</div>
+			<div class="sidebar-wrapper">
+				<ul class="nav">
+					<li class="<?php echo ($page['pid'] == "info") ? ' active' : '' ?>">
+						<a href="?mode=info">
+							<i class="material-icons">dashboard</i>
+							<p>Dashboard</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "category") ? ' active' : '' ?>">
+						<a href="?mode=category">
+							<i class="material-icons">category</i>
+							<p>Categories</p>
+						</a>
+					</li>
+					<li>
+					<li class="<?php echo ($page['pid'] == "goods") ? ' active' : '' ?>">
+						<a href="?mode=goods">
+							<i class="material-icons">reorder</i>
+							<p>Packages</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "cupons") ? ' active' : '' ?>">
+						<a href="?mode=cupons">
+							<i class="material-icons">card_giftcard</i>
+							<p>Coupons</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "pages") ? ' active' : '' ?>">
+					<a href="?mode=pages">
+						<i class="material-icons">pages</i>
+						<p>Pages</p>
+					</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "payments") ? ' active' : '' ?>">
+						<a href="?mode=payments">
+							<i class="material-icons">receipt</i>
+							<p>Payments</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "rcon-console") ? ' active' : '' ?>">
+						<a href="?mode=rcon">
+							<i class="material-icons">developer_board</i>
+							<p>Remote console (RCON)</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "users") ? ' active' : '' ?>">
+						<a href="?mode=users">
+							<i class="material-icons">account_circle</i>
+							<p>Users</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "advert") ? ' active' : '' ?>">
+						<a href="?mode=advert">
+							<i class="material-icons">rss_feed</i>
+							<p>Announcement</p>
+						</a>
+					</li>
+					<li class="<?php echo ($page['pid'] == "settings" OR $page['pid'] == "design" OR $page['pid'] == "merchant" OR $page['pid'] == "notifications" OR $page['pid'] == "links" OR $page['pid'] == "rcon") ? ' active' : '' ?>">
+						<a data-toggle="collapse" href="#settings" <?php echo ($page['pid'] == "settings" OR $page['pid'] == "design" OR $page['pid'] == "merchant" OR $page['pid'] == "notifications" OR $page['pid'] == "links" OR $page['pid'] == "rcon") ? 'aria-expanded="true"' : 'aria-expanded="false" class="collapsed"'; ?>>
+							<i class="material-icons">settings</i>
+							<p>Settings
+								<b class="caret"></b>
+							</p>
+						</a>
+						<div class="<?php echo ($page['pid'] == "settings" OR $page['pid'] == "design" OR $page['pid'] == "merchant" OR $page['pid'] == "notifications" OR $page['pid'] == "links" OR $page['pid'] == "rcon") ? ' collapse in' : 'collapse' ?>" id="settings">
+							<ul class="nav">
+								<li class="<?php echo ($page['pid'] == "settings") ? ' active' : '' ?>">
+									<a href="?mode=settings">
+										Main settings
+									</a>
+								</li>
+								<li class="<?php echo ($page['pid'] == "merchant") ? ' active' : '' ?>">
+									<a href="?mode=settings&id=merchant">
+										Payment methods
+									</a>
+								</li>
+								<li class="<?php echo ($page['pid'] == "notifications") ? ' active' : '' ?>">
+								<a href="?mode=settings&id=notifications">
+									Discord notifications
+								</a>
+								</li>
+								<li class="<?php echo ($page['pid'] == "links") ? ' active' : '' ?>">
+									<a href="?mode=settings&id=links">
+										Link settings
+									</a>
+								</li>
+								<li class="<?php echo ($page['pid'] == "rcon") ? ' active' : '' ?>">
+									<a href="?mode=settings&id=rcon">
+										Servers
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Open menu</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand hidden-xs">Dashboard :: <?php echo $page['title']; ?></a>
+						<a class="navbar-brand visible-xs">Dashboard :: <?php echo $page['title']; ?></a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<i class="material-icons">person</i>
+									<p class="hidden-lg hidden-md">
+										User
+										<b class="caret"></b>
+									</p>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="?do=logout">Logout</a>
+									</li>
+								</ul>
+							</li>
+							<li class="separator hidden-lg hidden-md"></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<div class="content">
+				<div class="container-fluid">
+					<?php echo MessageShow(); ?>
+					<?php echo $page['content']; ?>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul>
+							<li>
+								<a href="//<?php echo $config['main']['mainurl']; ?>">
+									Back on site
+								</a>
+							</li>
+							<li>
+							</li>
+						</ul>
+					</nav>
+					<p class="copyright pull-right">
+						JordyDeveloper &copy;
+						<script>
+							document.write(new Date().getFullYear())
+						</script>
+					</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+
+<script src="style/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="style/js/jquery-ui.min.js" type="text/javascript"></script>
+<script src="style/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="style/js/material.min.js" type="text/javascript"></script>
+<script src="style/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="style/js/jquery.validate.min.js"></script>
+<script src="style/js/jquery.datatables.js"></script>
+<script src="style/js/jquery.select-bootstrap.js"></script>
+<script src="style/js/jasny-bootstrap.min.js"></script>
+<script src="style/js/material-dashboard.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.card .material-datatables label').addClass('form-group');
+	});
+	function setFormValidation(id) {
+		$(id).validate({
+			errorPlacement: function(error, element) {
+				$(element).parent('div').addClass('has-error');
+			}
+		});
+	}
+
+	$(document).ready(function() {
+		setFormValidation('#category');
+		setFormValidation('#goods');
+		setFormValidation('#cupons');
+		setFormValidation('#users');
+		setFormValidation('#settings');
+		setFormValidation('#linkss');
+		setFormValidation('#rcon');
+	});
+</script>
+</html>

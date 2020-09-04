@@ -1,0 +1,13 @@
+* {
+	overflow: auto;
+}
+
+body {
+	padding: 20px 10px;
+}
+
+@media (min-width: 768px) {
+	.jumbotron a {
+		float: none;
+	}
+}

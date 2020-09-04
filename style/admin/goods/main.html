@@ -1,0 +1,24 @@
+<div class="card">
+	<div class="card-header">
+		<h4 class="card-title">Package list</h4>
+	</div>
+	<div class="card-content">
+		<a href="?mode=goods&do=add" class="btn btn-block btn-danger"><i class="material-icons">add</i> Add package</a>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<th>#</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Server</th>
+					<th>Category</th>
+					<th>Discount (%)</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+					<?php echo $list; ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

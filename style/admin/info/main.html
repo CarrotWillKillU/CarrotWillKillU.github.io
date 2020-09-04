@@ -1,0 +1,142 @@
+<div class="row">
+	<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="card card-stats">
+			<div class="card-header" data-background-color="orange">
+				<i class="material-icons">person_outline</i>
+			</div>
+			<div class="card-content">
+				<p class="category">Staff users</p>
+				<h3 class="card-title"><?php echo $users_count; ?></h3>
+			</div>
+			<div class="card-footer">
+				<div class="stats">
+					<i class="material-icons">autorenew</i> At this moment
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="card card-stats">
+			<div class="card-header" data-background-color="green">
+				<i class="material-icons">attach_money</i>
+			</div>
+			<div class="card-content">
+				<p class="category">Successful payments</p>
+				<h3 class="card-title"><?php echo $pays['success']; ?></h3>
+			</div>
+			<div class="card-footer">
+				<div class="stats">
+					<i class="material-icons">date_range</i> Last 24 hours
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="card card-stats">
+			<div class="card-header" data-background-color="red">
+				<i class="material-icons">payment</i>
+			</div>
+			<div class="card-content">
+				<p class="category">Pending payments</p>
+				<h3 class="card-title"><?php echo $pays['fail']; ?></h3>
+			</div>
+			<div class="card-footer">
+				<div class="stats">
+					<i class="material-icons">local_offer</i> Last 24 hours
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-6 col-sm-6">
+		<div class="card card-stats">
+			<div class="card-header" data-background-color="blue">
+				<i class="material-icons">info_outline</i>
+			</div>
+			<div class="card-content">
+				<p class="category">All payments</p>
+				<h3 class="card-title"><?php echo $pays['all']; ?></h3>
+			</div>
+			<div class="card-footer">
+				<div class="stats">
+					<i class="material-icons">update</i> Last 24 hours
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header card-header-icon" data-background-color="red">
+				<i class="material-icons">info_outline</i>
+			</div>
+			<div class="card-content">
+				<h4 class="card-title">Information about site:</h4>
+				<p><b>Current version:</b> <?php echo VERSION; ?></p>
+				<p><b>Latest version:</b> <?php echo $new_version; ?></p>
+				<hr>
+				<h4 class="card-title">Weekly shopping chartist (graph)</h4>
+				<div id="ct-chart"></div>
+				<hr>
+				<div id="pie-chart"></div>
+			</div>
+			<div class="card-footer">
+				<h6>Purchase statistics</h6>
+				<i class="fa fa-circle text-danger"></i> Pending
+				<i class="fa fa-circle text-info"></i> Completed
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="card">
+			<div class="card-header card-header-icon" data-background-color="twitter" style="background-color:#005fd1;">
+				<i class="fa fa-twitter fa-lg"></i>
+			</div>
+			<div class="card-content">
+				<h4 class="card-title">News</h4>
+				<div id="vk_groups"><a class="twitter-timeline" data-width="593" data-height="564" data-theme="dark" href="https://twitter.com/MineStoreCMS?ref_src=twsrc%5Etfw">Tweets by MineStoreCMS</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="style/js/chartist.min.js"></script>
+<script>
+	//noinspection JSUnresolvedVariable
+	new Chartist.Line('#ct-chart', {
+		labels: ['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'],
+		series: [
+			[   "<?=$pays['Monday'];?>",
+				"<?=$pays['Tuesday'];?>",
+				"<?=$pays['Wednesday'];?>",
+				"<?=$pays['Thursday'];?>",
+				"<?=$pays['Friday'];?>",
+				"<?=$pays['Saturday'];?>",
+				"<?=$pays['Sunday'];?>"
+			]
+		]
+	}, {
+		lineSmooth: Chartist.Interpolation.simple({
+			divisor: 4
+		}),
+		fullWidth: true,
+		chartPadding: {
+			right: 40
+		},
+		axisY: {
+			onlyInteger: true,
+			offset: 20
+		}
+	});
+	var data = {
+		series: [<?=$pays['success'].','.$pays['fail'];?>]
+	};
+
+	var sum = function(a, b) { return a + b };
+
+	new Chartist.Pie('#pie-chart', data, {
+		labelInterpolationFnc: function(value) {
+			return Math.round(value / data.series.reduce(sum) * 100) + '%';
+		}
+	});
+
+</script>

@@ -1,0 +1,13 @@
+<form id="linkss" class="card" method="POST">
+	<div class="card-header">
+		<h4 class="card-title">Notification about payments</h4>
+	</div>
+	<div class="card-content">
+		<div class="form-group">
+			<div class="text">You can find it here: "Go to your discord server -> Server Settings -> Webhooks -> Create Webhook" and put URL.</div>
+			<label for="accessToken" class="control-label">Discord Webhook URL</label>
+			<input type="text" id="webhook" name="webhook" value="<?php echo $config['discord']['webhook']; ?>" class="form-control" placeholder="Webhook URL" required>
+		</div>
+		<button class="btn btn-block btn-danger"><i class="material-icons">save</i> Update</button>
+	</div>
+</form>

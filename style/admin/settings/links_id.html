@@ -1,0 +1,31 @@
+<div class="row" id="link_<?php echo $i; ?>">
+	<div class="col-xs-6 col-sm-5">
+		<div class="form-group label-floating">
+			<label for="link_name_<?php echo $i; ?>" class="control-label">Name</label>
+			<input name="link_name_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['links'][$i]['name']; ?>" required>
+		</div>
+	</div>
+	<div class="col-xs-6 col-sm-5">
+		<div class="form-group label-floating">
+			<label for="link_href_<?php echo $i; ?>" class="control-label">Link</label>
+			<input name="link_href_<?php echo $i; ?>" class="form-control" type="text" value="<?php echo $config['links'][$i]['href']; ?>" required>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2 text-center">
+		<button class="btn btn-warning btn-round" type="button" onclick="removeid('<?php echo $i; ?>')"><i class="material-icons">delete</i></button>
+	</div>
+	<div class="col-xs-5 form-group" style="padding-bottom: 0px; margin: 0px;">
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="link_footer_<?php echo $i; ?>" <?php echo ($config['links'][$i]['footer']) ? 'checked' : ''; ?>> Show in Footer?
+			</label>
+		</div>
+	</div>
+	<div class="col-xs-7 form-group" style="padding-bottom: 0px; margin: 0px;">
+		<div class="checkbox">
+			<label>
+				<input type="checkbox" name="link_blank_<?php echo $i; ?>" <?php echo ($config['links'][$i]['blank']) ? 'checked' : ''; ?>> Open in new page?
+			</label>
+		</div>
+	</div>
+</div>

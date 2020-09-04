@@ -1,0 +1,12 @@
+<tr>
+	<td><?php echo $data['id']; ?></td>
+	<td><?php echo $data['name']; ?></td>
+	<td><?php echo $data['cost']; ?> <?php echo $config['main']['currency_symbol']; ?></td>
+	<td><?php echo ($data['server'] == '*') ? 'All' : @$config['servers'][$data['server']]['name']; ?></td>
+	<td><?php echo @$link->query("SELECT * FROM `AD_CATEGORIES` WHERE `id` = '{$data['cat']}'")->fetch()['title']; ?></td>
+	<td><?php echo $data['cupon']; ?>%</td>
+	<td class="td-actions">
+		<a href="?mode=goods&do=edit&id=<?php echo $data['id']; ?>" rel="tooltip" class="btn btn-info btn-simple" data-original-title="Edit"><i class="material-icons">edit</i></a>
+		<a href="?mode=goods&do=delete&id=<?php echo $data['id']; ?>" rel="tooltip" class="btn btn-danger btn-simple" data-original-title="Delete"><i class="material-icons">close</i></a>
+	</td>
+</tr>
